@@ -27,3 +27,6 @@ jobs:
       - name: Test with pytest
         run: |
           python -m pytest
+        env:
+          CONFIG_TYPE: api.config.TestingConfig
+          CREATE_DB_TABLES: True
