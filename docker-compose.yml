@@ -1,0 +1,11 @@
+
+version: '3'
+services:
+  api:
+    container_name: recipe_book_api
+    build: api/.
+    entrypoint: api/service_starter.sh
+    env_file:
+      - api/.env
+    ports:
+      - '5000:5000'
