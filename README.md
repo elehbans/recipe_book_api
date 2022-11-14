@@ -47,6 +47,7 @@ Integration tests are run each time a commit is pushed using a Github Action
 - Using `flask_marshmallow` to handle response serialization
 - DB Operations are utility functions to enable easier testing
 - `gunicorn` is used for production-quality service
+- Primary Key for the Recipe table is a UUID to support distributed workloads and systems
 
 ### Manual QA
 
