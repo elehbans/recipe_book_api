@@ -38,7 +38,7 @@ Integration tests are run each time a commit is pushed using a Github Action
 
 ## Hygiene
 
-`black` is used for formatting.
+`black` is used for formatting and `flake8` for linting.
 
 ## Design Discussion
 - Config management using object allows for easy deployment in different environments
