@@ -24,7 +24,7 @@ docker-compose up
 
 By default the app uses port `5000` and runs using `gunicorn` instead of the development server from `flask`.
 
-For a cloud deployment, one can use `Pulumi` (an IaC tool) and deploy similarly to this (example)[https://github.com/pulumi/examples/blob/master/aws-py-fargate/__main__.py]
+For a cloud deployment, one can use `Pulumi` (an IaC tool) and deploy similarly to this [example](https://github.com/pulumi/examples/blob/master/aws-py-fargate/__main__.py)
 
 ## Testing
 
