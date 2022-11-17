@@ -30,7 +30,7 @@ For a cloud deployment, one can use `Pulumi` (an IaC tool) and deploy similarly 
 
 No unit tests because there is no business logic within the API layer since it functions only as CRUD layer.
 
-Integration tests can be run by `python -m pytest tests/test_integration.py`.
+Integration tests can be run by `python -m pytest tests/api/test_integration.py`.
 
 ## CI / CD
 
@@ -63,3 +63,6 @@ curl -X GET http://localhost:5000/recipes
 
 ```
 
+# Recipe Book Frontend
+
+## 
