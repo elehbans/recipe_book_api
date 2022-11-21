@@ -17,7 +17,6 @@
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "react-table": "^7.8.0",
-    "typescript": "^4.9.3",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
   },
@@ -47,6 +46,14 @@
   },
   "proxy": "http://localhost:5000",
   "devDependencies": {
-    "@types/react-table": "^7.7.12"
+    "@types/react-table": "^7.7.12",
+    "@typescript-eslint/eslint-plugin": "^5.44.0",
+    "eslint": "^8.28.0",
+    "eslint-config-standard-with-typescript": "^23.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.5.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.31.11",
+    "typescript": "^4.9.3"
   }
 }

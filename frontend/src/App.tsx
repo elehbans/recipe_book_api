@@ -1,28 +1,27 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react'
 
 // Components
-import EditViewRecipeForm from './components/edit_view_recipe_form/edit_view_recipe_form';
-import Header from './components/header';
-import RecipeTable from './components/recipe_table/recipe_table';
+import EditViewRecipeForm from './components/edit_view_recipe_form/edit_view_recipe_form'
+import Header from './components/header'
+import RecipeTable from './components/recipe_table/recipe_table'
 
 // Functions
 import API from './utils/api'
 
 // Types
-import { Recipe } from './types/custom';
+import { Recipe } from './types/custom'
 
 // Styling
-import './App.css';
+import './App.css'
 
-function App() {
-
+function App () {
   // State
   const [recipes, setRecipes] = useState(new Array<Recipe>())
   const [selectedRecipe, setSelectedRecipe] = useState({} as Recipe)
 
   // memoized callbacks for state updates from child components
   const updateRecipesCallback = useCallback(async () => {
-    const updatedRecipes = await API.get_all_recipes() as Recipe[]
+    const updatedRecipes = await API.get_all_recipes()
     setRecipes(updatedRecipes)
   }, [setRecipes])
 
@@ -39,17 +38,17 @@ function App() {
   return (
     <div className="app-container">
         <Header/>
-        <RecipeTable 
+        <RecipeTable
           updateRecipesCallback={updateRecipesCallback}
-          updateSelectedRecipeCallback={updateSelectedRecipeCallback} 
+          updateSelectedRecipeCallback={updateSelectedRecipeCallback}
           recipes={recipes}
         />
-        <EditViewRecipeForm 
-          updateRecipesCallback={updateRecipesCallback} 
+        <EditViewRecipeForm
+          updateRecipesCallback={updateRecipesCallback}
           selectedRecipe={selectedRecipe}
         />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

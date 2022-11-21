@@ -1,11 +1,11 @@
-import React from 'react';
-import * as Yup from 'yup';
+import React from 'react'
+import * as Yup from 'yup'
 
 const MESSAGES = {
-    too_long: 'Too Long!',
-    too_short: 'Too Short!',
-    required: 'Field is Required',
-    ingredients_incorrectly_formatted: 'expected format for each ingredient: "<quantity>,<quantityType>,<name>;"'
+  too_long: 'Too Long!',
+  too_short: 'Too Short!',
+  required: 'Field is Required',
+  ingredients_incorrectly_formatted: 'expected format for each ingredient: "<quantity>,<quantityType>,<name>;"'
 }
 
 const recipeFormSchema = Yup.object().shape({
@@ -25,7 +25,7 @@ const recipeFormSchema = Yup.object().shape({
   instructions: Yup.string()
     .min(10, MESSAGES.too_short)
     .max(200, MESSAGES.too_long)
-    .required(MESSAGES.required),
-});
+    .required(MESSAGES.required)
+})
 
 export default recipeFormSchema

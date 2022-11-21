@@ -1,91 +1,90 @@
-import React, { useEffect, useState } from 'react';
-import { useTable } from 'react-table';
+import React, { useEffect, useState } from 'react'
+import { useTable } from 'react-table'
 
-import API from '../../../utils/api';
-import { Recipe } from '../../../types/custom';
+import API from '../../../utils/api'
+import { Recipe } from '../../../types/custom'
 
 interface TableWrapperProps {
-    updateRecipesCallback: () => Promise<void>,
-    updateSelectedRecipeCallback: (id: string) => void,
-    recipes: Recipe[]
+  updateRecipesCallback: () => Promise<void>
+  updateSelectedRecipeCallback: (id: string) => void
+  recipes: Recipe[]
 }
 
-function TableWrapper({updateRecipesCallback, updateSelectedRecipeCallback, recipes}: TableWrapperProps){
-
-    const formatData = (recipes: Recipe[]) : readonly { [x: string]: {}; }[] => {
-      const results = new Array<{}>()
-      if(recipes !== undefined){
-        recipes.forEach(v => {
-          results.push({
-              id: v.id,
-              name: v.name,
-              description: v.description,
-              instructions: v.instructions,
-              ingredients: v.ingredients
-          })
-       })
-      }
-      return(results)
+function TableWrapper ({ updateRecipesCallback, updateSelectedRecipeCallback, recipes }: TableWrapperProps) {
+  const formatData = (recipes: Recipe[]): ReadonlyArray<{ [x: string]: {} }> => {
+    const results = new Array<{}>()
+    if (recipes !== undefined) {
+      recipes.forEach(v => {
+        results.push({
+          id: v.id,
+          name: v.name,
+          description: v.description,
+          instructions: v.instructions,
+          ingredients: v.ingredients
+        })
+      })
     }
+    return (results)
+  }
 
-    const [data, setData] = useState(formatData(recipes))
+  const [data, setData] = useState(formatData(recipes))
 
-    useEffect(() => {
-      setData(formatData(recipes))
-    }, [recipes])
+  useEffect(() => {
+    setData(formatData(recipes))
+  }, [recipes])
 
-    const handleEdit = (recipeId: string) => {
-      updateSelectedRecipeCallback(recipeId)
-    }
+  const handleEdit = (recipeId: string) => {
+    updateSelectedRecipeCallback(recipeId)
+  }
 
-    const handleDelete = async (recipe: Recipe) => {
-      await API.delete_recipe(recipe)
-      updateRecipesCallback()
-    }
+  const handleDelete = async (recipe: Recipe) => {
+    await API.delete_recipe(recipe)
+    updateRecipesCallback()
+  }
 
-    const columns = React.useMemo(
-        () => [
-          {
-            Header: 'Name',
-            accessor: 'name', // accessor is the "key" in the data
-          },
-          {
-            Header: 'Description',
-            accessor: 'description',
-          },
-          {
-            Header: "Edit",
-            accessor: "edit",
-            Cell: ({value, row}: any) => (
+  const columns = React.useMemo(
+    () => [
+      {
+        Header: 'Name',
+        accessor: 'name' // accessor is the "key" in the data
+      },
+      {
+        Header: 'Description',
+        accessor: 'description'
+      },
+      {
+        Header: 'Edit',
+        accessor: 'edit',
+        Cell: ({ value, row }: any) => (
               <div>
                 <button onClick={() => handleEdit(row.original.id)}>Edit</button>
               </div>
-            )
-          },
-          {
-            Header: "Delete",
-            accessor: "delete",
-            Cell: ({value, row}: any) => (
+        )
+      },
+      {
+        Header: 'Delete',
+        accessor: 'delete',
+        Cell: ({ value, row }: any) => (
               <div>
-                <button onClick={() => handleDelete(row.original)}>Delete</button>
+                <button onClick={async () => await handleDelete(row.original)}>Delete</button>
               </div>
-            )
-          }
-        ],
-        []
-      )
+        )
+      }
+    ],
+    []
+  )
 
-    const tableInstance = useTable({ columns, data })
+  const tableInstance = useTable({ columns, data })
 
-    const {
-        getTableProps,
-        getTableBodyProps,
-        headerGroups,
-        rows,
-        prepareRow,
-    } = tableInstance
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow
+  } = tableInstance
 
-    return(
+  return (
         <table {...getTableProps()}>
               <thead>
                 {// Loop over the header rows
@@ -127,7 +126,7 @@ function TableWrapper({updateRecipesCallback, updateSelectedRecipeCallback, reci
                 })}
               </tbody>
             </table>
-    )
+  )
 }
 
 export default TableWrapper
