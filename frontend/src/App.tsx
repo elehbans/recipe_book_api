@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 
 // Components
 import EditViewRecipeForm from './components/edit_view_recipe_form/edit_view_recipe_form'
-import Header from './components/header'
+import Header from './components/header/header'
 import RecipeTable from './components/recipe_table/recipe_table'
 
 // Functions

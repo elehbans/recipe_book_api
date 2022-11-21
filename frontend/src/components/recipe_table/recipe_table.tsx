@@ -16,7 +16,7 @@ function RecipeTable ({ updateRecipesCallback, updateSelectedRecipeCallback, rec
             <Card.Header>Current Recipes</Card.Header>
             { recipes.length > 0
               ? TableWrapper({ updateRecipesCallback, updateSelectedRecipeCallback, recipes })
-              : 'No Recipes Yet'
+              : 'No Recipes Yet - Add one using form below'
             }
         </Card>
   )

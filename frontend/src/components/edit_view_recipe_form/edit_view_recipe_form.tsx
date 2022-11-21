@@ -8,6 +8,24 @@ import recipeFormSchema from './formik/validation_schema'
 import API from '../../utils/api'
 import { Recipe } from '../../types/custom'
 
+interface FieldFactoryProps {
+  fieldName: string,
+}
+
+function FieldFactory (props: FieldFactoryProps) {
+
+  const prettyDescription = `${props.fieldName}: `
+  const fieldId = `edit-view-form-${props.fieldName}-field`
+
+  return(
+    <div key={`${props.fieldName}-container`}>
+        <label key={`${props.fieldName}-label`} htmlFor='id'>{prettyDescription}</label>
+        <Field key={`${props.fieldName}-field`} type="text" name={props.fieldName} id={fieldId} readOnly={props.fieldName === 'id'} />
+        <ErrorMessage key={`${props.fieldName}-error-msg`} name={props.fieldName} className='formik-error' component='div'/>
+    </div>
+  )
+}
+
 interface EditViewRecipeFormProps {
   updateRecipesCallback: () => Promise<void>
   selectedRecipe: Recipe
@@ -21,7 +39,7 @@ function EditViewRecipeForm ({ updateRecipesCallback, selectedRecipe }: EditView
 
   return (
         <Card className='edit-view-recipe-container'>
-            <Card.Header>Recipes</Card.Header>
+            <Card.Header>Recipe Entry Form</Card.Header>
             <Formik
                 enableReinitialize // necessary for re-render when initValues update.
                 initialValues={initValues}
@@ -45,35 +63,7 @@ function EditViewRecipeForm ({ updateRecipesCallback, selectedRecipe }: EditView
             >
                 {({ isSubmitting, isValid }) => (
                     <Form>
-                        <div>
-                            <label htmlFor='id'>{'Id: '}</label>
-                            <Field type="text" name="id" id='edit-view-form-id-field' readOnly/>
-                            <ErrorMessage name='id' className='formik-error' component='div'/>
-                        </div>
-
-                        <div>
-                            <label htmlFor='name'>{'Name: '}</label>
-                            <Field type="text" name="name"/>
-                            <ErrorMessage name='name' className='formik-error' component='div'/>
-                        </div>
-
-                        <div>
-                            <label htmlFor='description'>{'Description: '}</label>
-                            <Field type="text" name="description"/>
-                            <ErrorMessage name='description' className='formik-error' component='div'/>
-                        </div>
-
-                        <div>
-                            <label htmlFor='ingredients'>{'Ingredients: '}</label>
-                            <Field type="text" name="ingredients"/>
-                            <ErrorMessage name='ingredients' className='formik-error' component='div'/>
-                        </div>
-
-                        <div>
-                            <label htmlFor='instructions'>{'Instructions: '}</label>
-                            <Field type="text" name="instructions"/>
-                            <ErrorMessage name='instructions' className='formik-error' component='div'/>
-                        </div>
+                        {Array.from(Object.keys(initialValues), (fieldName) => <FieldFactory fieldName={fieldName} />)}
 
                         <button type="submit" disabled={isSubmitting || !isValid}>
                             Submit

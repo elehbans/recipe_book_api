@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.3",
@@ -46,6 +45,7 @@
   },
   "proxy": "http://localhost:5000",
   "devDependencies": {
+    "@testing-library/react": "^13.4.0",
     "@types/react-table": "^7.7.12",
     "@typescript-eslint/eslint-plugin": "^5.44.0",
     "eslint": "^8.28.0",

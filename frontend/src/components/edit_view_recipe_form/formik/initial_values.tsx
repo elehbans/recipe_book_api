@@ -1,4 +1,6 @@
-const initialValues = {
+import { Recipe } from "../../../types/custom"
+
+const initialValues : Recipe = {
   id: '',
   name: '',
   description: '',

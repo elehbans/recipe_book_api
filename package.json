@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@types/testing-library__react": "^10.2.0",
+    "@types/testing-library__user-event": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.2.3"
+  }
+}

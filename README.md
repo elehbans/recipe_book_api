@@ -77,3 +77,19 @@ Start a dev server on `http://localhost:3000`
    npm install
    npm start
 ```
+
+Linting is done with `eslint`
+
+```bash
+   cd frontend
+   ./node_modules/.bin/eslint src/ --fix
+```
+
+## Testing
+
+```bash
+   cd frontend
+   npm test
+```
+
+Tests are kept alongside the code they are testing per recommendation of [create-react-app](https://create-react-app.dev/docs/running-tests/)
