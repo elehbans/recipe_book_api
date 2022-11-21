@@ -1,38 +1,75 @@
-.App {
+.app-container {
+  background-color: grey;
+  height:100vh;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.recipe-book-header {
+  width: 50%;
+  height: 10%;
+  margin-top: 5%;
+  padding-top: 20px;
+  font-size:xx-large;
+  background-color: yellow;
+  border-radius: 5px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.recipe-book-header-text {
+  font-size: 40px;
+  color:darkgreen;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.recipe-table-container {
+  width: 50%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  font-size:xx-large;
+  background-color: aqua;
+  border-radius: 5px;
+  text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.edit-view-recipe-container {
+  width: 50%;
+  margin-top: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size:xx-large;
+  background-color: aqua;
+  border-radius: 5px;
+  text-align: center;
 }
 
-.App-link {
-  color: #61dafb;
+.formik-error {
+  font-size: medium;
+  color: red;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+table, th, td {
+  border: 1px solid;
 }
+
+th {
+  background-color: black;
+  color: blanchedalmond;
+}
+
+table {
+  margin: 0 auto;
+}
+
+td {
+  font-size: medium;
+  padding: 3px;
+  background-color: aliceblue;
+}
+
+#edit-view-form-id-field {
+  background-color: grey;
+}
+

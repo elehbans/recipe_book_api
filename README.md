@@ -69,4 +69,11 @@ curl -X GET http://localhost:5000/recipes
 
 # Recipe Book Frontend
 
-## 
+## Development
+
+Start a dev server on `http://localhost:3000`
+```bash
+   cd frontend
+   npm install
+   npm start
+```
