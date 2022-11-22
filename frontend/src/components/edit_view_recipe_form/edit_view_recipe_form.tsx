@@ -28,10 +28,11 @@ function FieldFactory (props: FieldFactoryProps) {
 
 interface EditViewRecipeFormProps {
   updateRecipesCallback: () => Promise<void>
+  updateSelectedRecipeCallback: (id: string) => void
   selectedRecipe: Recipe
 }
 
-function EditViewRecipeForm ({ updateRecipesCallback, selectedRecipe }: EditViewRecipeFormProps) {
+function EditViewRecipeForm ({ updateRecipesCallback, updateSelectedRecipeCallback, selectedRecipe }: EditViewRecipeFormProps) {
   const initValues: Recipe =
         selectedRecipe === undefined || Object.keys(selectedRecipe).length === 0
           ? initialValues
@@ -46,12 +47,14 @@ function EditViewRecipeForm ({ updateRecipesCallback, selectedRecipe }: EditView
                 validationSchema={recipeFormSchema}
                 onSubmit={(values: Recipe, { setSubmitting, setErrors, setValues, setTouched }) => {
                   setTimeout(async () => {
+                    console.log(JSON.stringify(selectedRecipe))
                     if (Object.keys(selectedRecipe).length === 0) {
                       await API.add_recipe(values)
                     } else {
                       await API.update_recipe(values)
                     }
                     updateRecipesCallback()
+                    updateSelectedRecipeCallback('')
 
                     // resetForm returns to initial state, does not clear
                     setTouched({})

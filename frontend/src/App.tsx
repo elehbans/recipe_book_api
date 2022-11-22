@@ -26,7 +26,9 @@ function App () {
   }, [setRecipes])
 
   const updateSelectedRecipeCallback = useCallback((id: string) => {
-    const newSelectedRecipe = recipes.find((value) => value.id === id) as Recipe
+    const newSelectedRecipe = id !== ''
+    ? recipes.find((value) => value.id === id) as Recipe
+    : {} as Recipe
     setSelectedRecipe(newSelectedRecipe)
   }, [setSelectedRecipe, recipes])
 
@@ -45,6 +47,7 @@ function App () {
         />
         <EditViewRecipeForm
           updateRecipesCallback={updateRecipesCallback}
+          updateSelectedRecipeCallback={updateSelectedRecipeCallback}
           selectedRecipe={selectedRecipe}
         />
     </div>

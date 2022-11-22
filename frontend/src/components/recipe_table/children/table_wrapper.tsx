@@ -34,6 +34,7 @@ function TableWrapper ({ updateRecipesCallback, updateSelectedRecipeCallback, re
   }, [recipes])
 
   const handleEdit = (recipeId: string) => {
+    console.log(recipeId)
     updateSelectedRecipeCallback(recipeId)
   }
 

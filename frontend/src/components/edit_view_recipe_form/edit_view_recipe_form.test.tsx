@@ -6,8 +6,10 @@ import { Recipe } from '../../types/custom'
 
 test('initial empty state', () => {
     const mockUpdateRecipesCallback = async () => {}
+    const mockUpdateSelectedRecipeCallback = async () => {}
     const {getByText} = render(<EditViewRecipeForm 
                                 selectedRecipe={{} as Recipe} 
+                                updateSelectedRecipeCallback={mockUpdateSelectedRecipeCallback}
                                 updateRecipesCallback={mockUpdateRecipesCallback} 
                             />)
 
@@ -25,6 +27,7 @@ test('initial empty state', () => {
 
 test('initial filled state', () => {
     const mockUpdateRecipesCallback = async () => {}
+    const mockUpdateSelectedRecipeCallback = async () => {}
     const mockRecipe : Recipe = {
         id: '',
         name: 'Choco-Chunk Cookie',
@@ -35,6 +38,7 @@ test('initial filled state', () => {
 
     const {getByText} = render(<EditViewRecipeForm 
                                 selectedRecipe={mockRecipe}
+                                updateSelectedRecipeCallback={mockUpdateSelectedRecipeCallback}
                                 updateRecipesCallback={mockUpdateRecipesCallback} 
                             />)
 
